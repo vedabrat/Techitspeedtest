@@ -110,3 +110,10 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() 
   gulp.watch('*.html', browserSync.reload);
   gulp.watch('js/**/*.js', browserSync.reload);
 });
+task :build do
+  system('bundle exec jekyll build')
+end
+
+namespace :assets do
+  task precompile: :build
+end
